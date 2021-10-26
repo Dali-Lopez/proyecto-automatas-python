@@ -1,0 +1,5 @@
+https://graphviz.readthedocs.io/en/stable/
+https://graphviz.readthedocs.io/en/stable/api.html#graph
+https://pythonrepo.com/repo/pytransitions-transitions-python-python-implementation-of-algorithms-and-design-patterns
+https://graphviz.readthedocs.io/en/stable/examples.html#fsm-py
+
