@@ -1,12 +1,12 @@
 import graphviz
-
+#Comentario desde visual
 f = graphviz.Digraph('finite_state_machine', filename='fsm.png')
 f.attr(rankdir='LR', size='100')
 a='a'
 b='b'
 c='c'
 lenguaje = ['0','1']
-# Nodo inicial
+# Nodo inicial recibir algo. y hacer cosas muy de jakers
 f.node( name='', shape='point')
 f.node(a,shape='circle')
 f.edge( '',a,'',shape='point')
