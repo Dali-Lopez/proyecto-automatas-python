@@ -23,4 +23,4 @@ f.edge(a, b, label=lenguaje[0])
 f.edge(c, a, label=lenguaje[1])
 
 f.render()
-#ultima modificacion 29 de cotubre 18:37
+#ultima modificacion 29 de cotubre 18:40
