@@ -2,5 +2,5 @@ digraph finite_state_machine {
 	rankdir=LR size=800
 	"" [shape=point]
 	"Nodo inicial" [shape=circle]
-	"" -> "Nodo inicial" [label="" shape=point]
+	"" -> c [label="" shape=point]
 }
