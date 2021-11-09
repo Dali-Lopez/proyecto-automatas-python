@@ -1,11 +1,11 @@
 import graphviz
 #Comentario desde visual
-f = graphviz.Digraph('finite_state_machine', filename='fsm.png')
+f = graphviz.Digraph('finite_state_machine', filename='diagrama_automata', format='png')
 f.attr(rankdir='LR', size='100')
 a='a'
 b='b'
 c='c'
-lenguaje = ['0','1']
+lenguaje = ['camino 0','camino 1']
 # Nodo inicial recibir algo. y hacer cosas muy de jakers
 f.node( name='', shape='point')
 f.node(a,shape='circle')
