@@ -6,8 +6,9 @@ class count_entry_position:
         self.y = py
         print("x: ",self.x," y: ",self.y)    
     def newValues(self):
-        if self.y == 680:
-            self.y = 290
+        print("x: ",self.x," y: ",self.y)
+        if self.y == 640:
+            self.y = 190
             self.x = self.x + 100
         else:
             self.x = self.x + 0
