@@ -93,11 +93,11 @@ class App(Tk):
         self.Entry_transition = [Entry(self,textvariable=self.transition[self.number_of_entry], font=("Candara", 12), bg="white", fg="black")]
         self.Entry_transition[self.number_of_entry].place(x=self.positions_xy.x, y=self.positions_xy.y, width=100, height=30)
     def dibujar_automata(self):
-        self.estados.set("q1,q2,q3")
+        self.estados.set("q0,q1,q2")
         self.alfabeto.set("0,1")
         self.transition[0].set("q0,1=q1")
         self.estado_inicial.set("q0")
-        self.estados_finales.set("q0, q1, q3")
+        self.estados_finales.set("q2")
         
         #print("TRANSICION 1: ",self.transition[0].get())
         #print("Datos del automata:  Estados: ", self.estados.get()," Alfabeto: ", self.alfabeto.get(), " transiciones: ",self.transition, " Estados iniciales: ",self.estado_inicial.get(), " Estados finales: ",self.estados_finales.get())
