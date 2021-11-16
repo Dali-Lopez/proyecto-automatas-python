@@ -54,11 +54,13 @@ class App(Tk):
         label_estados = Label(self, text="Estados", font=("Lucida console", 10),bg='#E3F8FF', fg="black", anchor=NW).place(x=20, y=129)
         label_alfabeto = Label(self, text="Alfabeto", font=("Lucida console", 10),bg='#E3F8FF', fg="black", anchor=NW).place(x=20, y=159)
         
+        self.img = PhotoImage(file="diagrama_automata.png")
+        self.label_image_automata = Label(self, image = self.img)
         
         #### Fin de Labels
         
         #### Buttons
-        button_add_transition = Button(self, text="Agregar transición", font=("Lucida console", 10), bg="#E3F8FF", fg="black", anchor=NW, command=lambda: self.addTransition(self.positions_xy))
+        button_add_transition = Button(self, text="Agregar transición", font=("Lucida console", 10), bg="#E3F8FF", fg="black", anchor=NW, command=lambda: self.addTransition())
         button_add_transition.place(x=20, y=190)
         ##Codigo importante
         #button_get_values = Button(self, text="Dibujar autómata", font=("Lucida console", 12), bg="#E3F8FF", fg="black", anchor=NW, command=lambda: functions.getValues_function(self, self.transition))
@@ -70,19 +72,17 @@ class App(Tk):
         button_clear.place(x=20, y=50)
         #### Fin de Buttons
     
-    def addTransition(self,positions_xy):
-        positions_xy.newValues()
+    def addTransition(self):
+        self.positions_xy.newValues()
         self.number_of_entry = self.number_of_entry + 1
         self.transition.append(StringVar())
         self.Entry_transition.append(Entry(self,textvariable=self.transition[self.number_of_entry], font=("Candara", 12), bg="white", fg="black"))
-        self.Entry_transition[self.number_of_entry].place(x=positions_xy.x, y=positions_xy.y, width=100, height=30)
+        self.Entry_transition[self.number_of_entry].place(x=self.positions_xy.x, y=self.positions_xy.y, width=100, height=30)
     
     def clear_all(self):
         self.positions_xy = functions.count_entry_position(180, 190)
         self.transition.clear()
-        
-        self.label_image_automata.place_forget()
-        print("Limpiar")
+        print("Limpiar: ",self.transition)
         
         for entry in self.Entry_transition:
             entry.place_forget()
@@ -92,21 +92,26 @@ class App(Tk):
         self.transition.append(StringVar())
         self.Entry_transition = [Entry(self,textvariable=self.transition[self.number_of_entry], font=("Candara", 12), bg="white", fg="black")]
         self.Entry_transition[self.number_of_entry].place(x=self.positions_xy.x, y=self.positions_xy.y, width=100, height=30)
+        try: 
+            #self.label_image_automata.place_forget()
+            print(self.label_image_automata.place_forget())
+        except EOFError:
+            print("No hay imagen que borrar")
     def dibujar_automata(self):
-        self.estados.set("q0,q1,q2")
-        self.alfabeto.set("0,1")
-        self.transition[0].set("q0,1=q1")
-        self.estado_inicial.set("q0")
-        self.estados_finales.set("q2")
+        #self.estados.set("q0,q1,q2")
+        #self.alfabeto.set("0,1")
+        #self.transition[0].set("q0,1=q1")
+        #self.estado_inicial.set("q0")
+        #self.estados_finales.set("q2")
         
-        #print("TRANSICION 1: ",self.transition[0].get())
-        #print("Datos del automata:  Estados: ", self.estados.get()," Alfabeto: ", self.alfabeto.get(), " transiciones: ",self.transition, " Estados iniciales: ",self.estado_inicial.get(), " Estados finales: ",self.estados_finales.get())
+        automata_determinista = functions.automata(self.estados.get(), self.alfabeto.get(), self.transition, self.estado_inicial.get(), self.estados_finales.get())
+        resultado = automata_determinista.evaluarAutomata()
         
-        functions.automata(self.estados.get(), self.alfabeto.get(), self.transition, self.estado_inicial.get(), self.estados_finales.get())
-        functions.automata("q1,q2,q3", self.alfabeto.get(), self.transition, self.estado_inicial.get(), self.estados_finales.get())
+        #functions.automata("q1,q2,q3", self.alfabeto.get(), self.transition, self.estado_inicial.get(), self.estados_finales.get())
         self.img = PhotoImage(file="diagrama_automata.png")
         self.label_image_automata = Label(self, image = self.img)
         self.label_image_automata.place(x=520,y=130)
-        
+        label_name = Label(self, text=resultado, font=("Impact", 20),bg='#E3F8FF', fg="black", anchor=NW).place(x=680, y=90)
+
 root = App()
 root.mainloop()
