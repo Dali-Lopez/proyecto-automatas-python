@@ -44,7 +44,7 @@ class automata:
         #### Nodo inicial
         #print(type(estado_inicial))
         f.node( name='', shape='point')
-        f.node(estado_inicial, shape='circle')
+        f.node(estado_inicial,shape='circle')
         f.edge( '',estado_inicial,'',shape='point')
         #### Nodo Inicial
         
@@ -63,7 +63,7 @@ class automata:
             f.edge(nodo_inicio, nodo_final, camino)
         #### Transiciones
         
-        #### Render diagram
+        #### Generar el diagrama
         f.render()
     def nodos_finales(self,nodos):
         print (nodos)
@@ -72,14 +72,12 @@ class automata:
         count_list = 0
         newAppend = 0
         for node in list_values:
-            #print("Imprimiendo al caracter del nodo completo: "+node)
             if newAppend == 0:
                 nodos_list.append("")
                 newAppend = 1
             if (node >= chr(65) and node <= chr(122)) or (node >= chr(48) and node <= chr(57)):
                     print("caracter: "+node)
                     nodos_list[count_list] = nodos_list[count_list]+node               
-                    #print("Nodo final: "+transicionCompleta)
             if node == chr(44):
                 newAppend = 0
                 count_list = count_list + 1
@@ -91,7 +89,6 @@ class automata:
         nodeCamino = ""
         numbernode = 0
         for node in transicionCompleta:
-            #print("Imprimiendo al caracter del nodo completo: "+node)
             if node == chr(44):
                 numbernode = 1
             if node == chr(61):
@@ -105,7 +102,6 @@ class automata:
             if numbernode == 2:
                 if (node >= chr(65) and node <= chr(122)) or (node >= chr(48) and node <= chr(57)):
                     nodeFinal = nodeFinal+node
-        #print("transicion: ",nodeInicio, nodeFinal, nodeCamino)
         return nodeInicio, nodeFinal, nodeCamino
     def list_transitions(self,transition):
         lista = list()
@@ -118,20 +114,12 @@ class automata:
         count_numero_de_alfabeto = len(self.alfabeto_list)
         count_numero_de_estados = len(self.estados_list)
         i = 0
-        #print("numero del alfabeto: ",count_numero_de_alfabeto)
-        #print("numero de estados: ",count_numero_de_estados)
-        
-        #print("#####################\n", len(self.alfabeto_list)*len(self.estados_list))
-        #print("#####################\n", len(self.transiciones_list))
         if (len(self.alfabeto_list)*len(self.estados_list)) == len(self.transiciones_list):
             print("Es un autómata finito determinista: ",self.transiciones_list)
-        #while i<count_numero_de_estados:
             for i in self.estados_list:
-                #j = 0
                 for j in self.alfabeto_list:
                     for tran in self.transiciones_list:
                         nodo_i, nodo_f, camino = self.clearNode(tran)
-                        #print("Estado a evaluar: ", i," Camino a evaluar: ",j, "llega a: ",tran)
                         if i == nodo_i and  j==camino:
                             count_nodos = count_nodos + 1
                             break
@@ -139,15 +127,3 @@ class automata:
             return "Es un autómata finito determinista"
         else:
             return "No es un autómata finito determinista"
-                        #print()
-                    #print("Count nodos: ",count_nodos)
-                #print("j : ",j)
-                #j = j+1
-            
-            #print("######################\n")
-            
-            #print("i: ",i)
-         #   i = i+1
-        #print("###### estados: ", len(self.estados_list))
-        
-        #print("################################################################\nEvaluando automata: ",self.values_list)-1
