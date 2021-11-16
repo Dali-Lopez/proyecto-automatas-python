@@ -42,9 +42,9 @@ class automata:
         f = graphviz.Digraph('finite_state_machine', filename='diagrama_automata', format='png')
         f.attr(rankdir='LR', size='100')
         #### Nodo inicial
-        print(type(estado_inicial))
+        #print(type(estado_inicial))
         f.node( name='', shape='point')
-        f.node(estado_inicial,shape='circle')
+        f.node(estado_inicial, shape='circle')
         f.edge( '',estado_inicial,'',shape='point')
         #### Nodo Inicial
         

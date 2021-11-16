@@ -9,7 +9,7 @@ a='Nodo inicial'
 #dibujar nodo inicial
 f.node( name='', shape='point')
 f.node(a,shape='circle')
-f.edge( '',nodo_inicial[2],'',shape='point')
+f.edge( '',a,'',shape='point')
 
 vector = {'a':2,'v':1}
 print(vector.get('a'))
